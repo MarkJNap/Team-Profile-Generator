@@ -1,0 +1,26 @@
+{
+  "name": "team-profile-generator",
+  "version": "1.0.0",
+  "description": "Team profile generator that takes information and generates a HTML page to display the information",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarkJNap/Team-Profile-Generator.git"
+  },
+  "author": "MarkJNap",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MarkJNap/Team-Profile-Generator/issues"
+  },
+  "homepage": "https://github.com/MarkJNap/Team-Profile-Generator#readme",
+  "dependencies": {
+    "inquirer": "^8.2.4",
+    "jest": "^29.4.1"
+  }
+}
