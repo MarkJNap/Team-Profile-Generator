@@ -102,7 +102,12 @@ async function initQuestions() {
   if (newTeamMember.addMember === "Yes, add more members") {
     return initQuestions();
   }
-  return console.log(teamMemberData);
+  return createHTML();
+}
+
+function createHTML() {
+  fs.writeFile("./dist/index.html", generateHTML(teamMemberData), 
+  (err) => (err ? console.error(err) : console.log("Successfully created your HTML!")))
 }
 
 initQuestions();
