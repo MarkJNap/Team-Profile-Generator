@@ -105,20 +105,20 @@ function generateHTMLPage(team) {
 }
 
 generateHTML = (data) => {
-    teamArray = []; 
+    teamArray = [];
     for (let i = 0; i < data.length; i++) {
         const employee = data[i];
-        const role = employee.getRole(); 
+        const role = employee.getRole();
 
         if (role === 'Manager') {
             teamArray.push(generateManagerHTML(employee));
         }
         if (role === 'Engineer') {
             teamArray.push(generateEngineerHTML(employee));
-        } 
+        }
         if (role === 'Intern') {
             teamArray.push(generateInternHTML(employee));
-        }  
+        }
     }
     // console.log(teamArray);
     const employeeCards = teamArray.join('')

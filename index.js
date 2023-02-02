@@ -15,16 +15,40 @@ const questions = async () => {
       type: "input",
       message: "What is the name of the employee?",
       name: "name",
+      validate: name => {
+        if (name.length > 0 && isNaN(name)) {
+          return true
+        } else {
+          console.log("\nPlease enter a name to continue!");
+          return false
+        }
+      }
     },
     {
       type: "input",
       message: "What is their ID number?",
       name: "id",
+      validate: id => {
+        if (!isNaN(id) && (id > 0)) {
+          return true
+        } else {
+          console.log("\nPlease enter an ID number to continue!");
+          return false
+        }
+      }
     },
     {
       type: "input",
       message: "What is their email?",
       name: "email",
+      validate: email => {
+        if (email.includes("@")) {
+          return true
+        } else {
+          console.log("\nPlease enter an email to continue!");
+          return false
+        }
+      }
     },
     {
       type: "list",
@@ -33,16 +57,24 @@ const questions = async () => {
       choices: ["Manager", "Engineer", "Intern",],
     },
   ]);
-  console.log(basicAns);
+  // console.log(basicAns);
   if (basicAns.role === "Manager") {
     const managerAns = await inquirer.prompt([
       {
         type: "input",
         message: "What is their office number",
         name: "officeNumber",
-      },
+        validate: officeNumber => {
+          if (!isNaN(officeNumber) && (officeNumber > 0)) {
+            return true
+          } else {
+            console.log("\nPlease enter a valid office number to continue!");
+            return false
+          }
+        }
+      }
     ]);
-    console.log(managerAns);
+    // console.log(managerAns);
     const newManager = new Manager(
       basicAns.name,
       basicAns.id,
@@ -58,6 +90,15 @@ const questions = async () => {
         type: "input",
         message: "What is their GitHub username?",
         name: "github",
+        validate: github => {
+          valid = /^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i.test(github)
+          if (valid) {
+            return true
+          } else {
+            console.log("\nPlease enter a valid GitHub username to continue!");
+            return false
+          }
+        }
       },
     ]);
     const newEngineer = new Engineer(
@@ -75,6 +116,13 @@ const questions = async () => {
         type: "input",
         message: "What university did they attend?",
         name: "school",
+        validate: school => {
+          if (school.length > 0 && isNaN(school)) {
+            return true
+          } else {
+            console.log("\nPlease enter a school name to continue!");
+          }
+        }
       },
     ]);
 
@@ -85,6 +133,7 @@ const questions = async () => {
       internAns.school
     );
     teamMemberData.push(newIntern);
+    console.log(teamMemberData);
   }
 };
 
@@ -95,7 +144,7 @@ async function initQuestions() {
       type: "list",
       message: "Would you like to add more team members?",
       name: "addMember",
-      choices: ["Yes, add more members", "No, my team is complete"],
+      choices: ["Yes, add more members.", "No, my team is complete."],
     },
   ]);
 
@@ -106,8 +155,8 @@ async function initQuestions() {
 }
 
 function createHTML() {
-  fs.writeFile("./dist/index.html", generateHTML(teamMemberData), 
-  (err) => (err ? console.error(err) : console.log("Successfully created your HTML!")))
+  fs.writeFile("./dist/index.html", generateHTML(teamMemberData),
+    (err) => (err ? console.error(err) : console.log("Successfully created your Team Profile HTML!")))
 }
 
 initQuestions();
