@@ -13,24 +13,24 @@ const questions = async () => {
   const basicAns = await inquirer.prompt([
     {
       type: "input",
-      message: "What is your name?",
+      message: "What is the name of the employee?",
       name: "name",
     },
     {
       type: "input",
-      message: "What is your ID number?",
+      message: "What is their ID number?",
       name: "id",
     },
     {
       type: "input",
-      message: "What is your email?",
+      message: "What is their email?",
       name: "email",
     },
     {
       type: "list",
-      message: "What is your role?",
+      message: "What is their role?",
       name: "role",
-      choices: ["Engineer", "Intern", "Manager"],
+      choices: ["Manager", "Engineer", "Intern",],
     },
   ]);
   console.log(basicAns);
@@ -38,7 +38,7 @@ const questions = async () => {
     const managerAns = await inquirer.prompt([
       {
         type: "input",
-        message: "What is your office number",
+        message: "What is their office number",
         name: "officeNumber",
       },
     ]);
@@ -56,7 +56,7 @@ const questions = async () => {
     const engineerAns = await inquirer.prompt([
       {
         type: "input",
-        message: "What is your GitHub user name?",
+        message: "What is their GitHub username?",
         name: "github",
       },
     ]);
@@ -73,7 +73,7 @@ const questions = async () => {
     const internAns = await inquirer.prompt([
       {
         type: "input",
-        message: "What university did you attend?",
+        message: "What university did they attend?",
         name: "school",
       },
     ]);
