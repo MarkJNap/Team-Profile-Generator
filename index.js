@@ -62,7 +62,7 @@ const questions = async () => {
     const managerAns = await inquirer.prompt([
       {
         type: "input",
-        message: "What is their office number",
+        message: "What is their office number?",
         name: "officeNumber",
         validate: officeNumber => {
           if (!isNaN(officeNumber) && (officeNumber > 0)) {
@@ -148,7 +148,7 @@ async function initQuestions() {
     },
   ]);
 
-  if (newTeamMember.addMember === "Yes, add more members") {
+  if (newTeamMember.addMember === "Yes, add more members.") {
     return initQuestions();
   }
   return createHTML();
